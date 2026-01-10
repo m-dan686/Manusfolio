@@ -1,0 +1,26 @@
+:root {
+  /* Strict Palette - NO EXCEPTIONS */
+  --orange: #ff6a00;
+  --green: #00c853;
+
+  --bg-light: #fff7f0;
+  --bg-dark: #0b0f0c;
+
+  --text-dark: #0b0f0c;
+  --text-light: #ffffff;
+
+  /* Mappings */
+  --bg-primary: var(--bg-light);
+  --text-primary: var(--text-dark);
+
+  /* Input Tokens */
+  --input-bg: transparent;
+  --input-border: var(--orange);
+  --input-focus: var(--green);
+}
+
+/* Dark Mode Overrides */
+:root[class~="dark"] {
+  --bg-primary: var(--bg-dark);
+  --text-primary: var(--text-light);
+}

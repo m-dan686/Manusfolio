@@ -1,0 +1,43 @@
+/* Custom Keyframes and Utilities that Tailwind doesn't cover */
+
+/* Rotating Border */
+@keyframes spin-slow {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes spin-reverse-slow {
+    from {
+        transform: rotate(360deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+.animate-spin-slow {
+    animation: spin-slow 20s linear infinite;
+}
+
+.animate-spin-reverse-slow {
+    animation: spin-reverse-slow 25s linear infinite;
+}
+
+/* Text Reveal Gradient */
+.text-gradient-orange {
+    background: linear-gradient(to right, var(--orange), #ff9e40);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.text-gradient-green {
+    background: linear-gradient(to right, var(--green), #69f0ae);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
