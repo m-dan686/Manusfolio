@@ -24,3 +24,10 @@
   --bg-primary: var(--bg-dark);
   --text-primary: var(--text-light);
 }
+:root {
+  --brand-orange: #ff7a00;
+  --brand-green: #1f9d55;        /* deep green (not neon) */
+  --brand-green-glow: rgba(31, 157, 85, 0.45);
+  --brand-orange-glow: rgba(255, 122, 0, 0.55);
+}
+

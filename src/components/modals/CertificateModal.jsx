@@ -1,8 +1,8 @@
-import React from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FiX, FiMaximize } from 'react-icons/fi';
+import React from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { FiX } from "react-icons/fi";
 
-const CertificateModal = ({ isOpen, onClose, image, title }) => {
+const CertificateModal = ({ isOpen, onClose, pdf, title }) => {
     return (
         <AnimatePresence>
             {isOpen && (
@@ -10,36 +10,40 @@ const CertificateModal = ({ isOpen, onClose, image, title }) => {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
-                    className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-sm"
+                    className="fixed inset-0 z-50 bg-black/90 backdrop-blur-sm flex items-center justify-center p-4"
                     onClick={onClose}
                 >
                     <motion.div
-                        initial={{ scale: 0.8, opacity: 0 }}
+                        initial={{ scale: 0.85, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
-                        exit={{ scale: 0.8, opacity: 0 }}
-                        transition={{ type: "spring", damping: 25, stiffness: 300 }}
-                        className="relative max-w-5xl w-full max-h-[90vh] flex flex-col items-center justify-center p-2"
+                        exit={{ scale: 0.85, opacity: 0 }}
+                        transition={{ type: "spring", stiffness: 260, damping: 25 }}
+                        className="relative w-full max-w-6xl h-[90vh] bg-black rounded-xl overflow-hidden"
                         onClick={(e) => e.stopPropagation()}
                     >
-                        {/* Close Button */}
+                        {/* CLOSE */}
                         <button
                             onClick={onClose}
-                            className="absolute -top-12 right-0 md:top-0 md:-right-12 p-2 bg-white/10 rounded-full text-white hover:bg-orange hover:text-white transition-colors"
+                            className="absolute top-4 right-4 z-50 bg-black/60 hover:bg-red-500 text-white rounded-full p-3 transition-colors shadow-lg border border-white/10 backdrop-blur-sm"
+                            aria-label="Close Modal"
                         >
                             <FiX className="text-2xl" />
                         </button>
 
-                        {/* Image */}
-                        <div className="w-full h-full overflow-hidden rounded-lg shadow-2xl border border-white/20">
-                            <img
-                                src={image}
-                                alt={title}
-                                className="w-full h-full object-contain max-h-[85vh]"
+                        {/* CONTENT VIEWER (PDF or Image) */}
+                        {pdf?.toLowerCase().endsWith('.pdf') ? (
+                            <iframe
+                                src={`${pdf}#toolbar=0&navpanes=0&scrollbar=1`}
+                                title={title}
+                                className="w-full h-full rounded-xl"
                             />
-                        </div>
-
-                        <p className="mt-4 text-text-primary text-lg font-bold">{title}</p>
-
+                        ) : (
+                            <img
+                                src={pdf}
+                                alt={title}
+                                className="w-full h-full object-contain rounded-xl bg-black"
+                            />
+                        )}
                     </motion.div>
                 </motion.div>
             )}

@@ -1,10 +1,32 @@
-import React, { useState } from 'react';
-import CertificateModal from '../components/modals/CertificateModal';
-import { certificatesData } from '../data/certificatesData';
-import { FiEye } from 'react-icons/fi';
+import React, { useState, useEffect } from "react";
+import { certificatesData } from "../data/certificatesData";
+import CertificateModal from "../components/modals/CertificateModal";
+import gsap from "gsap";
 
 const Certifications = () => {
     const [selectedCert, setSelectedCert] = useState(null);
+
+    useEffect(() => {
+        gsap.fromTo(
+            ".cert-card",
+            { opacity: 0, y: 60, scale: 0.9 },
+            {
+                opacity: 1,
+                y: 0,
+                scale: 1,
+                duration: 1,
+                stagger: 0.12,
+                ease: "power3.out",
+            }
+        );
+
+        gsap.to(".cert-orbit", {
+            rotate: 360,
+            duration: 30,
+            repeat: -1,
+            ease: "linear",
+        });
+    }, []);
 
     return (
         <div className="container mx-auto px-6 py-12">
@@ -17,36 +39,55 @@ const Certifications = () => {
                 </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 {certificatesData.map((cert) => (
                     <div
                         key={cert.id}
-                        className="group relative cursor-pointer rounded-xl overflow-hidden border border-white/10 bg-bg-primary aspect-video"
+                        className="cert-card relative cursor-pointer rounded-2xl overflow-hidden group"
                         onClick={() => setSelectedCert(cert)}
                     >
-                        {/* Image */}
+                        {/* SVG ORBIT */}
+                        <svg className="cert-orbit absolute inset-0 w-full h-full pointer-events-none">
+                            <circle
+                                cx="50%"
+                                cy="50%"
+                                r="48%"
+                                stroke="rgba(255,115,0,0.25)"
+                                strokeWidth="2"
+                                fill="none"
+                                strokeDasharray="6 14"
+                            />
+                        </svg>
+
+                        {/* IMAGE */}
                         <img
                             src={cert.image}
                             alt={cert.title}
-                            className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                            className="w-full h-full object-cover aspect-video transition-transform duration-700 group-hover:scale-110"
                         />
 
-                        {/* Overlay */}
-                        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-                            <div className="transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
-                                <FiEye className="text-4xl text-orange mb-2 mx-auto" />
-                                <p className="text-white font-bold text-center px-4">{cert.title}</p>
+                        {/* OVERLAY */}
+                        <div className="absolute inset-0 bg-black/70 opacity-0 group-hover:opacity-100 transition-opacity duration-400 flex items-center justify-center">
+                            <div className="text-center px-4">
+                                <p className="text-white font-bold text-lg mb-2">
+                                    {cert.title}
+                                </p>
+                                <span className="text-orange text-sm tracking-widest">
+                                    VIEW CERTIFICATE
+                                </span>
                             </div>
                         </div>
+
+                        {/* GLOW */}
+                        <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 shadow-[0_0_60px_rgba(255,115,0,0.6)]"></div>
                     </div>
                 ))}
             </div>
 
-            {/* Modal */}
             <CertificateModal
                 isOpen={!!selectedCert}
                 onClose={() => setSelectedCert(null)}
-                image={selectedCert?.image}
+                pdf={selectedCert?.pdf}
                 title={selectedCert?.title}
             />
         </div>

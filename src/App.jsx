@@ -5,6 +5,7 @@ import AppRoutes from './router';
 import ScrollToTop from './components/utils/ScrollToTop';
 import CursorFollower from './components/animations/CursorFollower';
 import PageLoader from './components/animations/PageLoader';
+import './utils/animations.gsap';
 
 function App() {
     return (
