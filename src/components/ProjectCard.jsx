@@ -1,72 +1,59 @@
-import React, { useEffect, useRef } from "react";
+import { useRef, useEffect } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const ProjectCard = ({ project, onClick }) => {
+export default function ProjectCard({ project, onOpen }) {
     const cardRef = useRef(null);
 
     useEffect(() => {
-        const el = cardRef.current;
+        const ctx = gsap.context(() => {
+            gsap.fromTo(
+                cardRef.current,
+                { opacity: 0, y: 50 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.8,
+                    ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: cardRef.current,
+                        start: "top bottom-=100",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        }, cardRef);
 
-        /* SCROLL FADE IN */
-        gsap.fromTo(
-            el,
-            { opacity: 0, y: 80, scale: 0.95 },
-            {
-                opacity: 1,
-                y: 0,
-                scale: 1,
-                duration: 1,
-                ease: "power3.out",
-                scrollTrigger: {
-                    trigger: el,
-                    start: "top 85%",
-                },
-            }
-        );
-
-        /* FLOATING GLOW MOTION */
-        gsap.to(el, {
-            y: -8,
-            duration: 3.5,
-            repeat: -1,
-            yoyo: true,
-            ease: "sine.inOut",
-            delay: Math.random() * 2,
-        });
+        return () => ctx.revert();
     }, []);
 
     return (
         <div
             ref={cardRef}
-            className="project-card relative h-80 rounded-xl overflow-hidden cursor-pointer"
-            onClick={onClick}
+            className="project-card"
+            onClick={() => onOpen(project)}
         >
-            {/* IMAGE */}
-            <img
-                src={project.image}
-                alt={project.title}
-                className="project-image w-full h-full object-cover"
-            />
+            <img src={project.image} alt={project.title} loading="lazy" />
 
-            {/* GLOW LAYER */}
-            <span className="project-glow-ring" />
-
-            {/* OVERLAY */}
-            <div className="project-overlay">
-                <div className="project-content">
-                    <h3>{project.title}</h3>
-                    <p>{project.description}</p>
-
-                    <button className="view-project-btn">
-                        View Project
-                    </button>
+            <div className="project-info">
+                <h3>{project.title}</h3>
+                <p>{project.description}</p>
+                <div className="project-tags">
+                    {project.tech.map((t) => (
+                        <span key={t} className="tag">
+                            {t}
+                        </span>
+                    ))}
                 </div>
+            </div>
+
+            <div className="project-footer">
+                <button className="view-btn">
+                    View Project
+                </button>
             </div>
         </div>
     );
-};
-
-export default ProjectCard;
+}

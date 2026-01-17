@@ -17,6 +17,9 @@ export const ThemeProvider = ({ children }) => {
         // Add current theme class
         root.classList.add(theme);
 
+        // Also set data-theme attribute for globals.css compatibility
+        root.setAttribute('data-theme', theme);
+
         // Save to local storage
         localStorage.setItem('theme', theme);
     }, [theme]);

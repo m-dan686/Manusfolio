@@ -3,7 +3,7 @@ export const certificatesData = [
         id: 1,
         title: "Computer Architecture & Digital Components",
         image: "/files/certificates/images/ComputerArchitectureDigitalComponents.jpg",
-        pdf: "/files/certificates/pdf/ComputerArchitectureDigitalComponents.jpg",
+        pdf: "/files/certificates/pdf/ComputerArchitectureDigitalComponents.pdf",
     },
     {
         id: 2,
@@ -15,7 +15,7 @@ export const certificatesData = [
         id: 3,
         title: "Discrete Mathematics Part 1",
         image: "/files/certificates/images/Discrete Mathematics Part 1.jpg",
-        pdf: "/files/certificates/pdf/Discrete Mathematics Part 1.jpg",
+        pdf: "/files/certificates/pdf/Discrete Mathematics Part 1.pdf",
     },
     {
         id: 4,

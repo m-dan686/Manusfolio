@@ -34,9 +34,9 @@ const Footer = () => {
     };
 
     return (
-        <footer ref={footerRef} className="py-8 bg-bg-primary border-t border-white/10 transition-colors duration-300">
+        <footer ref={footerRef} className="py-8 bg-[var(--bg-primary)] border-t border-white/10 transition-colors duration-300">
             <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4">
-                <p className="text-sm text-text-primary opacity-70">
+                <p className="text-sm text-[var(--text-primary)] opacity-70">
                     © {new Date().getFullYear()} Manufolio. All rights reserved.
                 </p>
 
@@ -47,7 +47,7 @@ const Footer = () => {
                             href={link.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-xl text-text-primary transition-colors"
+                            className="text-xl text-[var(--text-primary)] transition-colors"
                             onMouseEnter={(e) => handleMouseEnter(e)}
                             onMouseLeave={(e) => handleMouseLeave(e)}
                             aria-label={link.name}

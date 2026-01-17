@@ -1,42 +1,34 @@
-import React, { useEffect, useState } from "react";
-import gsap from "gsap";
-import ScrollTrigger from "gsap/ScrollTrigger";
+import { useState } from "react";
 import { projectsData } from "../data/projectsData";
 import ProjectCard from "../components/ProjectCard";
-import ProjectModal from "../components/modals/ProjectModal";
+import PPTViewer from "../components/PPTViewer";
+import "../styles/projects.css";
 
-gsap.registerPlugin(ScrollTrigger);
-
-const Projects = () => {
-    const [selectedProject, setSelectedProject] = useState(null);
-
-    // Grid animation removed to prevent conflict with ProjectCard's individual scroll triggers
+export default function Projects() {
+    const [active, setActive] = useState(null);
 
     return (
-        <section className="py-20">
-            <div className="container mx-auto px-6">
-                <h2 className="text-6xl font-bold mb-12 text-text-primary">
-                    <span className="text-orange">Power</span> Projects
-                </h2>
+        <section className="projects-section">
+            <h2 className="projects-title">
+                Featured <span>Projects</span>
+            </h2>
 
-                <div className="projects-grid grid md:grid-cols-2 lg:grid-cols-3 gap-10">
-                    {projectsData.map((project) => (
-                        <ProjectCard
-                            key={project.id}
-                            project={project}
-                            onClick={() => setSelectedProject(project)}
-                        />
-                    ))}
-                </div>
+            <div className="projects-grid">
+                {projectsData.map(project => (
+                    <ProjectCard
+                        key={project.id}
+                        project={project}
+                        onOpen={setActive}
+                    />
+                ))}
             </div>
 
-            <ProjectModal
-                isOpen={!!selectedProject}
-                onClose={() => setSelectedProject(null)}
-                project={selectedProject}
-            />
+            {active && (
+                <PPTViewer
+                    project={active}
+                    onClose={() => setActive(null)}
+                />
+            )}
         </section>
     );
-};
-
-export default Projects;
+}

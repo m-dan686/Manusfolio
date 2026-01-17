@@ -1,56 +1,34 @@
 export const projectsData = [
     {
         id: 1,
-        title: "AI Chat Assistant",
-        category: "AI / ML",
-        image: "/files/portfolio_images/AI CHT.jpeg",
-        description: "An intelligent conversational agent built with modern NLP techniques.",
-        tech: ["Python", "TensorFlow", "React"],
-        link: "#"
+        title: "Agrisafe Box",
+        description: "Smart IoT-based agriculture safety and monitoring system.",
+        tech: ["IoT", "Sensors", "React", "Cloud"],
+        image: "/files/portfolio_images/agrisafe.jpeg",
+        pptEmbed: "https://docs.google.com/presentation/d/1G6vJZ7SctVgD-w8Ra2ruXidFfBnN4opo/embed?start=false&loop=false&delayms=3000"
     },
     {
         id: 2,
-        title: "E-Commerce Platform",
-        category: "Web Development",
-        image: "/files/portfolio_images/E COM.jpeg",
-        description: "Full-stack e-commerce solution with payment integration.",
-        tech: ["MERN Stack", "Redux", "Stripe"],
-        link: "#"
+        title: "Digital Warranty Tracker",
+        description: "Centralized system to manage and track product warranties.",
+        tech: ["Spring Boot", "JWT", "MySQL", "React"],
+        image: "/files/portfolio_images/warranty.png",
+        pptEmbed: "https://docs.google.com/presentation/d/1pg183cF7O1KoKF82a2xrKsV1MbSHPp-Z/embed?start=false&loop=false&delayms=3000"
     },
     {
         id: 3,
-        title: "Data Visualization",
-        category: "Analysis",
-        image: "/files/portfolio_images/DTA VIS.jpeg",
-        description: "Interactive dashboards simplifying complex datasets.",
-        tech: ["D3.js", "React", "Python"],
-        link: "#"
+        title: "SAHAY",
+        description: "Real-time water quality monitoring and alerting platform.",
+        tech: ["React Native", "IoT", "Firebase", "ML"],
+        image: "/files/portfolio_images/sahay.jpeg",
+        pptEmbed: "https://docs.google.com/presentation/d/1IB3eEqbqp9LpM9AmkcB7fjmGliGeaAbe/embed?start=false&loop=false&delayms=3000"
     },
     {
         id: 4,
-        title: "Sahay - Aid Platform",
-        category: "Social Impact",
-        image: "/files/portfolio_images/SAHAY.jpeg",
-        description: "Platform connecting donors with those in need.",
-        tech: ["React", "Firebase", "Google Maps API"],
-        link: "#"
-    },
-    {
-        id: 5,
-        title: "Twitter Clone (TWI)",
-        category: "Social Media",
-        image: "/files/portfolio_images/TWI.jpeg",
-        description: "A functional clone of Twitter with real-time updates.",
-        tech: ["Next.js", "Socket.io", "MongoDB"],
-        link: "#"
-    },
-    {
-        id: 6,
-        title: "Agriculture Tech (AGR)",
-        category: "IoT",
-        image: "/files/portfolio_images/AGR.jpeg",
-        description: "Smart farming solution using IoT sensors.",
-        tech: ["Arduino", "React Native", "MQTT"],
-        link: "#"
-    },
+        title: "TwinScape CO₂",
+        description: "Carbon emission analytics and visualization system.",
+        tech: ["React", "Node.js", "Sensors", "Analytics"],
+        image: "/files/portfolio_images/twinscape.jpeg",
+        pptEmbed: "https://docs.google.com/presentation/d/1OEqpajpkEYJACmRhtyn0dTCfYqV2X4Mz/embed?start=false&loop=false&delayms=3000"
+    }
 ];

@@ -7,7 +7,7 @@ import About from './pages/About';
 import Projects from './pages/Projects';
 import Downloads from './pages/Downloads';
 import Certifications from './pages/Certifications';
-import Contact from './pages/Contact';
+import Contact from './pages/ContactPage';
 
 const AppRoutes = () => {
     const location = useLocation();

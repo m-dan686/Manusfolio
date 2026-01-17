@@ -190,18 +190,27 @@ const Home = () => {
             <div className="container mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center relative z-10">
                 {/* LEFT */}
                 <div className="space-y-6">
-                    <p className="hero-subtext text-green text-xl">Hello, I'm</p>
+                    <p className="hero-subtext text-green text-2xl bold">Hello, I'm</p>
                     <h1
                         ref={nameRef}
-                        className="text-6xl md:text-8xl font-bold text-text-primary"
+                        className="text-5xl md:text-6xl font-bold text-text-primary"
                     >
                         Manu Anandan
                     </h1>
                     <h2 className="hero-subtext text-3xl opacity-80">
-                        <span className="text-orange">Frontend</span> Developer
+                        <span className="text-orange">Full‑Stack</span> Developer
                     </h2>
                     <p className="hero-subtext opacity-60 max-w-lg">
-                        Transforming ideas into premium, motion-driven digital experiences.
+                        I specialize in building secure <strong>Spring Boot backends</strong> with JWT, RBAC, and Swagger UI,
+                        while crafting animated, responsive <strong>React frontends</strong> powered by GSAP, Three.js, and Tailwind CSS.
+                    </p>
+                    <p className="hero-subtext opacity-60 max-w-lg">
+                        Currently pursuing <strong>Information Technology</strong> at Sri Krishna College of Technology, Coimbatore,
+                        I transform ideas into premium, motion‑driven digital experiences with a focus on clarity, reproducibility,
+                        and professional polish.
+                    </p>
+                    <p className="hero-subtext opacity-60 max-w-lg">
+                        🚀 Passionate about developer experience, I ensure every project is documented, secure, and delightful to use.
                     </p>
 
                     <div className="flex gap-4 pt-8">

@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import ThemeToggle from './ThemeToggle';
 import gsap from 'gsap';
 import { FiMenu, FiX } from 'react-icons/fi';
+import ManufolioLogo from './ManufolioLogo';
 
 const navLinks = [
     { name: 'Home', path: '/' },
@@ -60,9 +61,11 @@ const Navbar = () => {
         >
             <div className="container mx-auto px-6 py-4 flex justify-between items-center">
                 {/* Logo */}
-                <Link to="/" className="text-2xl font-bold flex items-center gap-2">
-                    <span className="text-orange">MA</span>
-                    <span className="hidden sm:block text-text-primary">Manufolio</span>
+                <Link to="/" className="flex items-center gap-3">
+                    <ManufolioLogo />
+                    <span className="hidden sm:block text-[var(--text-primary)] font-semibold text-lg">
+                        Manufolio
+                    </span>
                 </Link>
 
                 {/* Desktop Menu */}
@@ -73,7 +76,7 @@ const Navbar = () => {
                             to={link.path}
                             ref={el => linksRef.current[index] = el}
                             className={({ isActive }) =>
-                                `relative text-sm font-medium transition-colors duration-300 ${isActive ? 'text-orange' : 'text-text-primary'}`
+                                `relative text-[15px] font-medium transition-colors duration-300 ${isActive ? 'text-orange' : 'text-[var(--text-primary)]'}`
                             }
                             onMouseEnter={handleMouseEnter}
                             onMouseLeave={(e) => {
@@ -97,7 +100,7 @@ const Navbar = () => {
                     <ThemeToggle />
 
                     {/* Mobile Menu Button */}
-                    <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-2xl text-text-primary">
+                    <button onClick={() => setIsOpen(!isOpen)} className="md:hidden text-2xl text-[var(--text-primary)]">
                         {isOpen ? <FiX /> : <FiMenu />}
                     </button>
                 </div>
@@ -105,13 +108,13 @@ const Navbar = () => {
 
             {/* Mobile Menu */}
             {isOpen && (
-                <div className="md:hidden bg-bg-primary absolute top-full left-0 w-full border-b border-white/10 shadow-xl py-4 flex flex-col items-center gap-4">
+                <div className="md:hidden bg-[var(--bg-primary)] absolute top-full left-0 w-full border-b border-white/10 shadow-xl py-4 flex flex-col items-center gap-4">
                     {navLinks.map((link) => (
                         <NavLink
                             key={link.name}
                             to={link.path}
                             className={({ isActive }) =>
-                                `text-lg font-medium ${isActive ? 'text-orange' : 'text-text-primary'}`
+                                `text-lg font-medium ${isActive ? 'text-orange' : 'text-[var(--text-primary)]'}`
                             }
                             onClick={() => setIsOpen(false)}
                         >
